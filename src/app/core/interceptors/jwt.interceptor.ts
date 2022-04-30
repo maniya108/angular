@@ -23,7 +23,7 @@ export class JwtInterceptor implements HttpInterceptor {
       const userInfo = JSON.parse(userData) as IUserInfo;
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${userInfo.token}`,
+          AuthToken: `${userInfo.token}`,
         },
       });
     }

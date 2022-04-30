@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, shareReplay } from 'rxjs';
+import { ITruckResponse } from 'src/app/models/trucks.model';
 
 import {
   ILoginModel,
@@ -43,7 +44,15 @@ export class CoreService {
       );
   }
 
-  logout() {
+  getTrucksInfo(): Observable<ITruckResponse> {
+    return this.httpClient
+      .get<ITruckResponse>(
+        'https://qa2.gim.com.bd/ejogajogAdminAPI/api/v1/admin/master/truckstands'
+      )
+      .pipe(shareReplay(1));
+  }
+
+  logout(): void {
     localStorage.removeItem(App.loginUser);
     this.authSubject.next(false);
   }
