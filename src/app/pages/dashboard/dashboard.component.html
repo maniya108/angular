@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <p>
     <mat-toolbar color="primary">
       <span>GIM Assessment</span>
@@ -13,4 +13,28 @@
       </button>
     </mat-toolbar>
   </p>
+  <ng-container *ngIf="isLoading; else loadMap">
+    <div class="loading-center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-container>
+  <ng-template #loadMap>
+    <div class="google-map-container">
+      <google-map [options]="mapOptions" [width]="null" [height]="null">
+        <map-marker-clusterer [imagePath]="markerClustererImagePath">
+          <map-marker
+            *ngFor="let markerPosition of truckDetails"
+            #marker="mapMarker"
+            [position]="markerPosition.position!"
+            [label]="markerPosition.id.toString()"
+            (mapClick)="openInfoWindow(marker, markerPosition)"
+          >
+          </map-marker>
+        </map-marker-clusterer>
+        <map-info-window>
+          <gim-map-info [infoContent]="infoContent"></gim-map-info>
+        </map-info-window>
+      </google-map>
+    </div>
+  </ng-template>
 </div>

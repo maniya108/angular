@@ -13,6 +13,7 @@ export interface ITruckModel {
   nameBn: null | string;
   latitude: number | null;
   longitude: number | null;
+  position?: google.maps.LatLngLiteral | google.maps.LatLng;
   truckCounts: TruckCount[];
 }
 

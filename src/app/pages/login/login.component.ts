@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -11,14 +11,16 @@ import { ILoginModel, IResponseModel } from './../../models/auth.model';
 import { CoreService } from '../../core/services/core.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'gim-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
+  private subscription$!: Subscription;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -45,7 +47,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.coreService
+    this.subscription$ = this.coreService
       .login(this.loginForm.getRawValue() as ILoginModel)
       .subscribe({
         next: (res: IResponseModel) => {
@@ -58,5 +60,9 @@ export class LoginComponent implements OnInit {
           this.snackBar.open(error?.error?.message, '', { duration: 5000 });
         },
       });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription$?.unsubscribe();
   }
 }

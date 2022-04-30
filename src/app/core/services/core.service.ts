@@ -3,12 +3,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, shareReplay } from 'rxjs';
 import { ITruckResponse } from 'src/app/models/trucks.model';
 
-import {
-  ILoginModel,
-  IResponseModel,
-  IUserInfo,
-} from '../../models/auth.model';
+import { ILoginModel, IResponseModel } from '../../models/auth.model';
 import { App } from '../constants/app.contants';
+import { ITruckModel } from './../../models/trucks.model';
 
 @Injectable({
   providedIn: 'root',
@@ -49,7 +46,19 @@ export class CoreService {
       .get<ITruckResponse>(
         'https://qa2.gim.com.bd/ejogajogAdminAPI/api/v1/admin/master/truckstands'
       )
-      .pipe(shareReplay(1));
+      .pipe(
+        shareReplay(1),
+        map((res: ITruckResponse) => {
+          res.data = res?.data?.filter(
+            (x: ITruckModel) => x.latitude && x.longitude
+          );
+          res?.data?.forEach(
+            (item: any) =>
+              (item.position = { lat: item.latitude, lng: item.longitude })
+          );
+          return res;
+        })
+      );
   }
 
   logout(): void {

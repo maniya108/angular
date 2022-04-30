@@ -1,0 +1,17 @@
+<div class="info">
+  <h2>{{ infoContent?.name }}</h2>
+  <div class="location align">
+    <span>Lat: {{ infoContent?.latitude }}</span>
+    <span>Lng: {{ infoContent?.longitude }}</span>
+  </div>
+  <div *ngIf="infoContent?.truckCounts?.length" class="scroll">
+    <div class="location" *ngFor="let item of infoContent.truckCounts">
+      <p class="flex-center flex-6">
+        <mat-icon>local_shipping</mat-icon> {{ item.truckType }}
+      </p>
+      <p class="flex-center flex-2">
+        <mat-icon>functions</mat-icon> {{ item.count }}
+      </p>
+    </div>
+  </div>
+</div>

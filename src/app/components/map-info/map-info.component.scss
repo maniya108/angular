@@ -1,0 +1,43 @@
+.info {
+  max-height: 400px;
+  overflow: hidden;
+
+  .scroll {
+    overflow: auto;
+    height: 270px;
+  }
+
+  .location {
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .flex-center {
+      display: flex;
+      align-items: center;
+    }
+
+    mat-icon {
+      margin-right: 8px;
+    }
+
+    .flex-6 {
+      flex: 6;
+    }
+
+    .flex-2 {
+      flex: 2;
+    }
+  }
+
+  .align {
+    margin: 8px 0 16px 0;
+  }
+
+  h2,
+  h4 {
+    margin: 0;
+  }
+}

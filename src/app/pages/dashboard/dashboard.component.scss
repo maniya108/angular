@@ -1,3 +1,23 @@
-.spacer {
-  flex: 1 1 auto;
+.container {
+  height: 100%;
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .loading-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    height: calc(100% - 96px);
+  }
+}
+
+.google-map-container {
+  .map-container {
+    width: 98% !important;
+    height: 840px !important;
+    margin: auto;
+  }
 }
