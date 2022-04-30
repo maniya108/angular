@@ -1,0 +1,46 @@
+<div class="login-container">
+  <form (ngSubmit)="login()" class="mat-elevation-z8" [formGroup]="loginForm">
+    <img src="assets/logos/logo.svg" alt="" />
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="xyz@example.com"
+        formControlName="email"
+        type="email"
+      />
+      <mat-error *ngIf="f['email'].errors && f['email'].errors['required']">
+        Username is required
+      </mat-error>
+      <mat-error *ngIf="f['email'].errors && f['email'].errors['email']">
+        Invalid Email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        placeholder="Abc@123"
+        formControlName="password"
+        type="password"
+      />
+      <mat-error
+        *ngIf="f['password'].errors && f['password'].errors['required']"
+      >
+        Password is required
+      </mat-error>
+    </mat-form-field>
+
+    <div class="text-center">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="loginForm.invalid"
+        type="submit"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+</div>

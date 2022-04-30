@@ -1,0 +1,27 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+
+  form {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+    flex-direction: column;
+    width: 320px;
+    padding: 32px;
+    border-radius: 16px;
+
+    img {
+      height: 80px;
+      width: 160px;
+      margin: 0 auto;
+      margin-bottom: 24px;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+  }
+}
