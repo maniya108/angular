@@ -2,26 +2,30 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
 
-## Development server
+## Follow the steps to run the app
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. The project is located in github repository, Click the below link to [Clone the app](https://github.com/maniya108/angular)
+2. Run the command in your cloned project location `npm install` or `npm i`
+3. To run the app use `ng serve` (angular cli should be installed your local machine) or `node ./node_modules/@angular/cli/bin/ng serve` (angluar cli not needed)
 
-## Code scaffolding
+## Features & Standards
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The following Coding standards and features are used in this assessment.
 
-## Build
+1.  Lazy loading for routing
+2.  Code splitting
+3.  Guards
+4.  Interceptors
+5.  Services
+6.  Constants
+7.  Login Component
+8.  Dashboard Component
+9.  angular google-maps
+10. Markers and Mpa info window
+11. Marker Clusters
+12. Unsubscribed the subscription
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## NOTE:
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. I dont have a GCP account. So, For the development purpose i didnt used Google Map API key
+2. In this assessment additionally i used clusters for grouping markers
